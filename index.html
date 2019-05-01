@@ -201,7 +201,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 ReactDOM.render(
-  "Hello, World!",
+  <div>Hello, World!</div>,
   document.getElementById("root")
 );
 ```
@@ -219,6 +219,27 @@ module.exports = {
 };
 ```
 </textarea
+          >
+        </section>
+        <section data-markdown>
+          <textarea data-template>
+            ### Compiling JSX with Babel
+```shell
+$ yarn babel src/popup.jsx
+
+import React from "react";
+import ReactDOM from "react-dom";
+ReactDOM.render(
+  React.createElement("div", null, "Hello, World!"),
+  document.getElementById("root"));
+```
+</textarea
+          >
+        </section>
+        <section data-markdown>
+          <textarea data-template>
+### Bundling HTML + JSX
+            </textarea
           >
         </section>
         <section data-markdown data-transition="slide-in none">
