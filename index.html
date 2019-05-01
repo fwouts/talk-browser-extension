@@ -30,13 +30,19 @@
     <style>
       .line {
         display: block;
+        font-size: 21px;
       }
       .line.focus {
-        background: #062;
+        background: #041;
       }
 
       .left-align {
         text-align: left;
+      }
+
+      .two-columns {
+        display: grid;
+        grid-template-columns: 50% 50%;
       }
     </style>
   </head>
@@ -133,6 +139,140 @@ What's a browser extension anyway?
         <section data-markdown>
           <textarea data-template>
             ## Standalone popup page
+          </textarea>
+        </section>
+        <section data-markdown>
+          <textarea data-template>
+            #### Install required packages
+
+```shell
+$ yarn add react react-dom
+$ yarn add --dev \
+$      @babel/core \ # Compile modern JavaScript
+$      @babel/preset-react \ # Compile JSX
+$      webpack webpack-cli \ # Bundler
+$      babel-loader \ # Use Babel from Webpack
+$      html-webpack-plugin # HTML injection plugin for Webpack
+```
+<p class="fragment" data-code-focus="1">
+  <!-- Highlight React -->
+</p>
+<p class="fragment" data-code-focus="3-4">
+  <!-- Highlight Babel -->
+</p>
+<p class="fragment" data-code-focus="5">
+  <!-- Highlight Webpack -->
+</p>
+<p class="fragment" data-code-focus="6">
+  <!-- Highlight babel-loader -->
+</p>
+<p class="fragment" data-code-focus="7">
+  <!-- Highlight html-webpack-plugin -->
+</p>
+          </textarea>
+        </section>
+        <section>
+          <div class="two-columns">
+            <div data-markdown>
+              <textarea data-template>
+#### src/popup.html
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>My extension</title>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
+```
+          </textarea
+              >
+            </div>
+            <div data-markdown>
+              <textarea data-template>
+#### src/popup.jsx
+
+```jsx
+import React from "react";
+import ReactDOM from "react-dom";
+
+ReactDOM.render(
+  "Hello, World!",
+  document.getElementById("root")
+);
+```
+          </textarea
+              >
+            </div>
+          </div>
+        </section>
+        <section data-markdown>
+          <textarea data-template>
+            #### babel.config.js
+```js
+module.exports = {
+  presets: ["@babel/preset-react"]
+};
+```
+</textarea
+          >
+        </section>
+        <section data-markdown data-transition="slide-in none">
+          <textarea data-template>
+#### webpack.config.js
+```js
+module.exports = {
+  entry: {
+    popup: "./src/popup.jsx"
+  },
+  output: {
+    filename: "[name].js"
+  },
+  mode: "development"
+};
+```
+          </textarea>
+        </section>
+        <section data-markdown data-transition="none">
+          <textarea data-template>
+#### webpack.config.js (continued)
+```js
+module.exports = {
+  ...
+  module: {
+    rules: [
+      {
+        include: __dirname + "/src",
+        loader: "babel-loader",
+        test: /\.jsx?$/
+      }
+    ]
+  }
+};
+```
+          </textarea>
+        </section>
+        <section data-markdown data-transition="none">
+          <textarea data-template>
+#### webpack.config.js (continued)
+```js
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+
+module.exports = {
+  ...,
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: "src/popup.html",
+      inject: true,
+      chunks: ["popup"]
+    })
+  ]
+};
+```
           </textarea>
         </section>
       </div>
