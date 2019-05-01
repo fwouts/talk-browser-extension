@@ -26,6 +26,15 @@
         : "css/print/paper.css";
       document.getElementsByTagName("head")[0].appendChild(link);
     </script>
+
+    <style>
+      .line {
+        display: block;
+      }
+      .line.focus {
+        background: #062;
+      }
+    </style>
   </head>
   <body>
     <div class="reveal">
@@ -59,9 +68,33 @@ What's a browser extension anyway?
   },
   "icons": { ... }
 }
-
 ```
-          </textarea>
+<p class="fragment" data-code-focus="2">
+  <!-- Highlight manifest version -->
+</p>
+<p class="fragment" data-code-focus="3">
+  <!-- Highlight name -->
+</p>
+<p class="fragment" data-code-focus="4">
+  <!-- Highlight version -->
+</p>
+<p class="fragment" data-code-focus="5">
+  <!-- Highlight permissions -->
+</p>
+<p class="fragment" data-code-focus="6-9">
+  <!-- Highlight background script -->
+</p>
+<p class="fragment" data-code-focus="10-12">
+  <!-- Highlight popup action -->
+</p>
+<p class="fragment" data-code-focus="13">
+  <!-- Highlight icons -->
+</p>
+<p class="fragment">
+  <!-- Highlight nothing -->
+</p>
+</textarea
+          >
         </section>
       </div>
     </div>
@@ -77,7 +110,15 @@ What's a browser extension anyway?
           { src: "plugin/markdown/marked.js" },
           { src: "plugin/markdown/markdown.js" },
           { src: "plugin/notes/notes.js", async: true },
-          { src: "plugin/highlight/highlight.js", async: true }
+          { src: "plugin/highlight/highlight.js", async: true },
+          { src: "node_modules/highlight.js/lib/highlight.js" },
+          {
+            src: "node_modules/reveal-code-focus/reveal-code-focus.js",
+            async: true,
+            callback: function() {
+              RevealCodeFocus();
+            }
+          }
         ]
       });
     </script>
