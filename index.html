@@ -32,9 +32,35 @@
       <div class="slides">
         <section data-markdown>
           <textarea data-template>
-## Page title
+## Building a browser extension with React
+          </textarea>
+        </section>
+        <section data-markdown data-background-color="#26c">
+          <textarea data-template>
+What's a browser extension anyway?
+          </textarea>
+        </section>
+        <section data-markdown>
+          <textarea data-template>
+## manifest.json
 
-A paragraph with some text and a [link](https://www.fwouts.com).
+```json
+{
+  "manifest_version": 2,
+  "name": "PR Monitor",
+  "version": "0.2.3",
+  "permissions": ["alarms", "notifications", "storage"],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": true
+  },
+  "browser_action": {
+    "default_popup": "index.html"
+  },
+  "icons": { ... }
+}
+
+```
           </textarea>
         </section>
       </div>
