@@ -125,7 +125,12 @@
             </p>
           </script>
         </section>
-        <section data-markdown class="left-align">
+        <section
+          data-markdown
+          class="left-align"
+          data-markdown
+          data-background-color="#26c"
+        >
           <script type="text/template">
             ### Step by step
             <p class="fragment">- Create a "web app"</p>
@@ -134,7 +139,7 @@
             <p class="fragment">- Profit</p>
           </script>
         </section>
-        <section data-markdown>
+        <section data-markdown data-markdown data-background-color="#26c">
           <script type="text/template">
             ## Creating a "web app"
           </script>
@@ -333,21 +338,21 @@
             <p class="fragment" data-code-focus="7-8"></p>
           </script>
         </section>
-        <section data-markdown>
+        <section data-markdown data-markdown data-background-color="#2c4">
           <script type="text/template">
             # Demo #1
 
             "Hello, World!" web app
           </script>
         </section>
-        <section data-markdown>
+        <section data-markdown data-markdown data-background-color="#26c">
           <script type="text/template">
             ## Making it an extension
           </script>
         </section>
         <section data-markdown>
           <script type="text/template">
-            ## manifest.json
+            #### manifest.json
 
             ```json
             {
@@ -363,7 +368,7 @@
         </section>
         <section data-markdown>
           <script type="text/template">
-            ## webpack.config.js
+            #### webpack.config.js
 
             ```js
             const CopyPlugin = require("copy-webpack-plugin");
@@ -382,9 +387,92 @@
         </section>
         <section data-markdown>
           <script type="text/template">
+            That's it.
+          </script>
+        </section>
+        <section data-markdown data-markdown data-background-color="#2c4">
+          <script type="text/template">
             # Demo #2
 
             "Hello, World!" extension
+          </script>
+        </section>
+        <section data-markdown data-markdown data-background-color="#26c">
+          <script type="text/template">
+            ## Adding a background script
+          </script>
+        </section>
+        <section data-markdown data-markdown>
+          <script type="text/template">
+            #### background.js
+
+            ```js
+            import randomName from "node-random-name";
+
+            setInterval(() => {
+              chrome.runtime.sendMessage({
+                greeting: `Hello ${randomName()}`
+              });
+            }, 1000);
+            ```
+          </script>
+        </section>
+        <section data-markdown data-markdown>
+          <script type="text/template">
+            #### popup.jsx
+
+            ```jsx
+            const App = () => {
+              const [state, setState] = useState({
+                greeting: "Hello, World!"
+              });
+              useEffect(() => {
+                const listener = message => setState(message);
+                chrome.runtime.onMessage.addListener(listener);
+                return () => chrome.runtime.onMessage.removeListener(listener);
+              }, []);
+              return <div>{state.greeting}</div>;
+            };
+
+            ReactDOM.render(<App />, document.getElementById("root"));
+            ```
+          </script>
+        </section>
+        <section data-markdown data-markdown>
+          <script type="text/template">
+            #### manifest.json
+
+            ```json
+            {
+              ...
+              "background": {
+                "scripts": ["background.js"],
+                "persistent": true
+              }
+            }
+            ```
+          </script>
+        </section>
+        <section data-markdown data-markdown>
+          <script type="text/template">
+            #### webpack.config.js
+
+            ```js
+            module.exports = {
+              ...
+              entry: {
+                background: "./src/background.js",
+                popup: "./src/popup.jsx"
+              }
+            };
+            ```
+          </script>
+        </section>
+        <section data-markdown data-markdown data-background-color="#2c4">
+          <script type="text/template">
+            # Demo #3
+
+            Extension with a background script
           </script>
         </section>
       </div>
