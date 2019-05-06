@@ -216,19 +216,36 @@
             <!-- Highlight "root" -->
           </p>
         </section>
-        <section data-markdown>
+        <section data-markdown data-separator-vertical="--">
           <script type="text/template">
+            ### Compiling JSX with Babel
+
+            ```shell
+            $ yarn babel src/popup.jsx
+            ```
+
+            --
+
+            ```js
+            { SyntaxError: src/popup.jsx: Unexpected token (4:16)
+
+              2 | import ReactDOM from "react-dom";
+              3 |
+            > 4 | ReactDOM.render(<div>Hello, World!</div>, document.getElementById("root"));
+                |                 ^
+              5 |
+            ```
+
+            --
+
             #### babel.config.js
             ```js
             module.exports = {
               presets: ["@babel/preset-react"]
             };
-            ```
-          </script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-            ### Compiling JSX with Babel
+
+            --
+
             ```shell
             $ yarn babel src/popup.jsx
             ```
