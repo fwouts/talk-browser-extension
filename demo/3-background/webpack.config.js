@@ -22,6 +22,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: "src/popup.html",
+      filename: "popup.html",
       inject: true,
       chunks: ["popup"]
     }),

@@ -94,7 +94,7 @@
                 "persistent": true
               },
               "browser_action": {
-                "default_popup": "index.html"
+                "default_popup": "popup.html"
               },
               "icons": { ... }
             }
@@ -312,6 +312,7 @@
               plugins: [
                 new HtmlWebpackPlugin({
                   template: "src/popup.html",
+                  filename: "popup.html",
                   inject: true,
                   chunks: ["popup"]
                 })
@@ -327,7 +328,7 @@
             ...
 
                 Asset       Size  Chunks             Chunk Names
-            index.html  221 bytes          [emitted]
+            popup.html  221 bytes          [emitted]
               popup.js    907 KiB   popup  [emitted]  popup
             Entrypoint popup = popup.js
             [./node_modules/webpack/buildin/global.js] (webpack)/buildin/global.js 472 bytes {popup} [built]
@@ -360,7 +361,7 @@
               "name": "Demo",
               "version": "0.0.0",
               "browser_action": {
-                "default_popup": "index.html"
+                "default_popup": "popup.html"
               }
             }
             ```
