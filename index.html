@@ -50,166 +50,163 @@
     <div class="reveal">
       <div class="slides">
         <section data-markdown>
-          <textarea data-template>
-## Building a browser extension with React
-          </textarea>
+          <script type="text/template">
+            ## Building a browser extension with React
+          </script>
         </section>
         <section data-markdown data-background-color="#26c">
-          <textarea data-template>
-What's a browser extension anyway?
-          </textarea>
+          <script type="text/template">
+            What's a browser extension anyway?
+          </script>
         </section>
         <section data-markdown data-transition="none">
-          <textarea data-template>
-![Screenshot](images/extension-screenshot-badge.png)
-          </textarea>
+          <script type="text/template">
+            ![Screenshot](images/extension-screenshot-badge.png)
+          </script>
         </section>
         <section data-markdown data-transition="none">
-          <textarea data-template>
-![Screenshot](images/extension-screenshot-badge-annotated.png)
-          </textarea>
+          <script type="text/template">
+            ![Screenshot](images/extension-screenshot-badge-annotated.png)
+          </script>
         </section>
         <section data-markdown data-transition="none">
-          <textarea data-template>
-![Screenshot](images/extension-screenshot-popup.png)
-          </textarea>
+          <script type="text/template">
+            ![Screenshot](images/extension-screenshot-popup.png)
+          </script>
         </section>
         <section data-markdown data-transition="none">
-          <textarea data-template>
-![Screenshot](images/extension-screenshot-popup-annotated.png)
-          </textarea>
+          <script type="text/template">
+            ![Screenshot](images/extension-screenshot-popup-annotated.png)
+          </script>
         </section>
         <section data-markdown>
-          <textarea data-template>
-## manifest.json
+          <script type="text/template">
+            ## manifest.json
 
-```json
-{
-  "manifest_version": 2,
-  "name": "PR Monitor",
-  "version": "0.2.3",
-  "permissions": ["alarms", "notifications", "storage"],
-  "background": {
-    "scripts": ["background.js"],
-    "persistent": true
-  },
-  "browser_action": {
-    "default_popup": "index.html"
-  },
-  "icons": { ... }
-}
-```
-<p class="fragment" data-code-focus="2">
-  <!-- Highlight manifest version -->
-</p>
-<p class="fragment" data-code-focus="3">
-  <!-- Highlight name -->
-</p>
-<p class="fragment" data-code-focus="4">
-  <!-- Highlight version -->
-</p>
-<p class="fragment" data-code-focus="5">
-  <!-- Highlight permissions -->
-</p>
-<p class="fragment" data-code-focus="6-9">
-  <!-- Highlight background script -->
-</p>
-<p class="fragment" data-code-focus="10-12">
-  <!-- Highlight popup action -->
-</p>
-<p class="fragment" data-code-focus="13">
-  <!-- Highlight icons -->
-</p>
-<p class="fragment">
-  <!-- Highlight nothing -->
-</p>
-</textarea
-          >
+            ```json
+            {
+              "manifest_version": 2,
+              "name": "PR Monitor",
+              "version": "0.2.3",
+              "permissions": ["alarms", "notifications", "storage"],
+              "background": {
+                "scripts": ["background.js"],
+                "persistent": true
+              },
+              "browser_action": {
+                "default_popup": "index.html"
+              },
+              "icons": { ... }
+            }
+            ```
+            <p class="fragment" data-code-focus="2">
+              <!-- Highlight manifest version -->
+            </p>
+            <p class="fragment" data-code-focus="3">
+              <!-- Highlight name -->
+            </p>
+            <p class="fragment" data-code-focus="4">
+              <!-- Highlight version -->
+            </p>
+            <p class="fragment" data-code-focus="5">
+              <!-- Highlight permissions -->
+            </p>
+            <p class="fragment" data-code-focus="6-9">
+              <!-- Highlight background script -->
+            </p>
+            <p class="fragment" data-code-focus="10-12">
+              <!-- Highlight popup action -->
+            </p>
+            <p class="fragment" data-code-focus="13">
+              <!-- Highlight icons -->
+            </p>
+            <p class="fragment">
+              <!-- Highlight nothing -->
+            </p>
+          </script>
         </section>
         <section data-markdown class="left-align">
-          <textarea data-template>
+          <script type="text/template">
             ### Step by step
             <p class="fragment">- Create a standalone popup page</p>
             <p class="fragment">- Set up Webpack</p>
             <p class="fragment">- Compile the extension</p>
             <p class="fragment">- Add a background script</p>
             <p class="fragment">- Profit</p>
-          </textarea>
+          </script>
         </section>
         <section data-markdown>
-          <textarea data-template>
+          <script type="text/template">
             ## Standalone popup page
-          </textarea>
+          </script>
         </section>
         <section data-markdown>
-          <textarea data-template>
+          <script type="text/template">
             #### Install required packages
 
-```shell
-$ yarn add react react-dom
-$ yarn add --dev \
-$      @babel/core @babel/cli \ # Compile modern JavaScript
-$      @babel/preset-react \ # Compile JSX
-$      webpack webpack-cli \ # Bundler
-$      babel-loader \ # Use Babel from Webpack
-$      html-webpack-plugin # HTML injection plugin for Webpack
-```
-<p class="fragment" data-code-focus="1">
-  <!-- Highlight --dev -->
-</p>
-<p class="fragment" data-code-focus="2">
-  <!-- Highlight React -->
-</p>
-<p class="fragment" data-code-focus="3-4">
-  <!-- Highlight Babel -->
-</p>
-<p class="fragment" data-code-focus="5">
-  <!-- Highlight Webpack -->
-</p>
-<p class="fragment" data-code-focus="6">
-  <!-- Highlight babel-loader -->
-</p>
-<p class="fragment" data-code-focus="7">
-  <!-- Highlight html-webpack-plugin -->
-</p>
-          </textarea>
+            ```shell
+            $ yarn add react react-dom
+            $ yarn add --dev \
+            $      @babel/core @babel/cli \ # Compile modern JavaScript
+            $      @babel/preset-react \ # Compile JSX
+            $      webpack webpack-cli \ # Bundler
+            $      babel-loader \ # Use Babel from Webpack
+            $      html-webpack-plugin # HTML injection plugin for Webpack
+            ```
+            <p class="fragment" data-code-focus="1">
+              <!-- Highlight --dev -->
+            </p>
+            <p class="fragment" data-code-focus="2">
+              <!-- Highlight React -->
+            </p>
+            <p class="fragment" data-code-focus="3-4">
+              <!-- Highlight Babel -->
+            </p>
+            <p class="fragment" data-code-focus="5">
+              <!-- Highlight Webpack -->
+            </p>
+            <p class="fragment" data-code-focus="6">
+              <!-- Highlight babel-loader -->
+            </p>
+            <p class="fragment" data-code-focus="7">
+              <!-- Highlight html-webpack-plugin -->
+            </p>
+          </script>
         </section>
         <section>
           <div class="two-columns">
             <div data-markdown>
-              <textarea data-template>
-#### src/popup.html
+              <script type="text/template">
+                #### src/popup.html
 
-```html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>My extension</title>
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
-</html>
-```
-          </textarea
-              >
+                ```html
+                <!DOCTYPE html>
+                <html lang="en">
+                  <head>
+                    <meta charset="utf-8">
+                    <title>My extension</title>
+                  </head>
+                  <body>
+                    <div id="root"></div>
+                  </body>
+                </html>
+                ```
+              </script>
             </div>
             <div data-markdown>
-              <textarea data-template>
-#### src/popup.jsx
+              <script type="text/template">
+                #### src/popup.jsx
 
-```jsx
-import React from "react";
-import ReactDOM from "react-dom";
+                ```jsx
+                import React from "react";
+                import ReactDOM from "react-dom";
 
-ReactDOM.render(
-  <div>Hello, World!</div>,
-  document.getElementById("root")
-);
-```
-          </textarea
-              >
+                ReactDOM.render(
+                  <div>Hello, World!</div>,
+                  document.getElementById("root")
+                );
+                ```
+              </script>
             </div>
           </div>
           <p class="fragment" data-code-focus="3-6">
@@ -220,90 +217,88 @@ ReactDOM.render(
           </p>
         </section>
         <section data-markdown>
-          <textarea data-template>
+          <script type="text/template">
             #### babel.config.js
-```js
-module.exports = {
-  presets: ["@babel/preset-react"]
-};
-```
-</textarea
-          >
+            ```js
+            module.exports = {
+              presets: ["@babel/preset-react"]
+            };
+            ```
+          </script>
         </section>
         <section data-markdown>
-          <textarea data-template>
+          <script type="text/template">
             ### Compiling JSX with Babel
-```shell
-$ yarn babel src/popup.jsx
-
-import React from "react";
-import ReactDOM from "react-dom";
-ReactDOM.render(
-  React.createElement("div", null, "Hello, World!"),
-  document.getElementById("root"));
-```
-</textarea
-          >
+            ```shell
+            $ yarn babel src/popup.jsx
+            ```
+            ```js
+            import React from "react";
+            import ReactDOM from "react-dom";
+            ReactDOM.render(
+              React.createElement("div", null, "Hello, World!"),
+              document.getElementById("root"));
+            ```
+          </script>
         </section>
         <section data-markdown>
-          <textarea data-template>
-### Bundling HTML + JSX
-            </textarea
-          >
+          <script type="text/template">
+            ### Bundling HTML + JSX
+          </script>
         </section>
         <section data-markdown data-transition="slide-in none">
-          <textarea data-template>
-#### webpack.config.js
-```js
-module.exports = {
-  entry: {
-    popup: "./src/popup.jsx"
-  },
-  output: {
-    filename: "[name].js"
-  },
-  mode: "development"
-};
-```
-          </textarea>
+          <script type="text/template">
+            #### webpack.config.js
+            ```js
+            module.exports = {
+              entry: {
+                popup: "./src/popup.jsx"
+              },
+              output: {
+                filename: "[name].js"
+              },
+              mode: "development"
+            };
+            ```
+          </script>
         </section>
         <section data-markdown data-transition="none">
-          <textarea data-template>
-#### webpack.config.js (continued)
-```js
-module.exports = {
-  ...
-  module: {
-    rules: [
-      {
-        include: __dirname + "/src",
-        loader: "babel-loader",
-        test: /\.jsx?$/
-      }
-    ]
-  }
-};
-```
-          </textarea>
+          <script type="text/template">
+            #### webpack.config.js (continued)
+            ```js
+            module.exports = {
+              ...
+              module: {
+                rules: [
+                  {
+                    include: __dirname + "/src",
+                    loader: "babel-loader",
+                    test: /\.jsx?$/
+                  }
+                ]
+              }
+            };
+            ```
+          </script>
         </section>
         <section data-markdown data-transition="none">
-          <textarea data-template>
-#### webpack.config.js (continued)
-```js
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+          <script type="text/template">
+            #### webpack.config.js (continued)
+            ```js
+            const HtmlWebpackPlugin = require("html-webpack-plugin");
 
-module.exports = {
-  ...,
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: "src/popup.html",
-      inject: true,
-      chunks: ["popup"]
-    })
-  ]
-};
-```
-          </textarea>
+            module.exports = {
+              ...,
+              plugins: [
+                new HtmlWebpackPlugin({
+                  template: "src/popup.html",
+                  inject: true,
+                  chunks: ["popup"]
+                })
+              ]
+            };
+            ```
+          </script>
         </section>
       </div>
     </div>
