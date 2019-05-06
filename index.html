@@ -263,13 +263,12 @@
             ```
           </script>
         </section>
-        <section data-markdown>
-          <script type="text/template">
-            ### Bundling HTML + JSX
-          </script>
-        </section>
         <section data-markdown data-separator-vertical="--">
           <script type="text/template">
+            ### Bundling HTML + JSX
+
+            --
+
             #### webpack.config.js
             ```js
             module.exports = {
@@ -315,6 +314,26 @@
               ]
             };
             ```
+
+            --
+
+            ```shell
+            $ yarn webpack
+
+            ...
+
+                Asset       Size  Chunks             Chunk Names
+            index.html  221 bytes          [emitted]
+              popup.js    907 KiB   popup  [emitted]  popup
+            Entrypoint popup = popup.js
+            [./node_modules/webpack/buildin/global.js] (webpack)/buildin/global.js 472 bytes {popup} [built]
+            [./src/popup.jsx] 161 bytes {popup} [built]
+                + 11 hidden modules
+            ✨  Done in 1.76s.
+            ```
+            <p class="fragment" data-code-focus="7-8">
+              <!-- Highlight emitted index.html and popup.js -->
+            </p>
           </script>
         </section>
       </div>
