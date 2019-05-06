@@ -263,7 +263,7 @@
             ### Bundling HTML + JSX
           </script>
         </section>
-        <section data-markdown data-transition="slide-in none">
+        <section data-markdown data-separator-vertical="--">
           <script type="text/template">
             #### webpack.config.js
             ```js
@@ -276,12 +276,9 @@
               },
               mode: "development"
             };
-            ```
-          </script>
-        </section>
-        <section data-markdown data-transition="none">
-          <script type="text/template">
-            #### webpack.config.js (continued)
+
+            --
+
             ```js
             module.exports = {
               ...
@@ -296,11 +293,9 @@
               }
             };
             ```
-          </script>
-        </section>
-        <section data-markdown data-transition="none">
-          <script type="text/template">
-            #### webpack.config.js (continued)
+
+            --
+
             ```js
             const HtmlWebpackPlugin = require("html-webpack-plugin");
 
