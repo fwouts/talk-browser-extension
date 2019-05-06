@@ -278,7 +278,7 @@
               output: {
                 filename: "[name].js"
               },
-              mode: "development"
+              mode: "production"
             };
 
             --
@@ -332,6 +332,56 @@
             ✨  Done in 1.76s.
             ```
             <p class="fragment" data-code-focus="7-8"></p>
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            # Demo #1
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ### Let's make an extension!
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## manifest.json
+
+            ```json
+            {
+              "manifest_version": 2,
+              "name": "Demo",
+              "version": "0.0.0",
+              "browser_action": {
+                "default_popup": "index.html"
+              }
+            }
+            ```
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## webpack.config.js
+
+            ```js
+            const CopyPlugin = require("copy-webpack-plugin");
+
+            module.exports = {
+              ...
+              plugins: [
+                ...
+                new CopyPlugin([
+                  { from: "manifest.json", to: "." },
+                ])
+              ]
+            };
+            ```
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            # Demo #2
           </script>
         </section>
       </div>
