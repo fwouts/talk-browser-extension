@@ -7,6 +7,9 @@ module.exports = {
   output: {
     filename: "[name].js"
   },
+  resolve: {
+    extensions: [".jsx", ".js"]
+  },
   mode: "development",
   module: {
     rules: [

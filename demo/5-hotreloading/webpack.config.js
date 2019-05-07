@@ -10,10 +10,10 @@ module.exports = {
   output: {
     filename: "[name].js"
   },
-  mode: "development",
   resolve: {
     extensions: [".jsx", ".js"]
   },
+  mode: "development",
   devServer: {
     contentBase: __dirname + "public",
     compress: true,

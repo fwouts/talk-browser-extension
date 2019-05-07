@@ -282,6 +282,9 @@
               output: {
                 filename: "[name].js"
               },
+              resolve: {
+                extensions: [".jsx", ".js"]
+              },
               mode: "production"
             };
 
@@ -427,6 +430,17 @@
             #### popup.jsx
 
             ```jsx
+            import App from "./App";
+
+            ReactDOM.render(<App />, document.getElementById("root"));
+            ```
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            #### App.jsx
+
+            ```jsx
             const App = () => {
               const [state, setState] = useState({
                 greeting: "Hello, World!"
@@ -439,7 +453,7 @@
               return <div>{state.greeting}</div>;
             };
 
-            ReactDOM.render(<App />, document.getElementById("root"));
+            export default App;
             ```
           </script>
         </section>
