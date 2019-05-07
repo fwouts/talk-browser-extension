@@ -412,6 +412,21 @@
         </section>
         <section data-markdown>
           <script type="text/template">
+            #### manifest.json
+
+            ```json
+            {
+              ...
+              "background": {
+                "scripts": ["background.js"],
+                "persistent": true
+              }
+            }
+            ```
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
             #### background.js
 
             ```js
@@ -454,21 +469,6 @@
             };
 
             export default App;
-            ```
-          </script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-            #### manifest.json
-
-            ```json
-            {
-              ...
-              "background": {
-                "scripts": ["background.js"],
-                "persistent": true
-              }
-            }
             ```
           </script>
         </section>
