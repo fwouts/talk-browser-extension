@@ -206,7 +206,7 @@
                 import ReactDOM from "react-dom";
 
                 ReactDOM.render(
-                  <div>Hello, World!</div>,
+                  <h1>Hello, World!</h1>,
                   document.getElementById("root")
                 );
                 ```
@@ -240,7 +240,7 @@
 
               2 | import ReactDOM from "react-dom";
               3 |
-            > 4 | ReactDOM.render(<div>Hello, World!</div>, document.getElementById("root"));
+            > 4 | ReactDOM.render(<h1>Hello, World!</h1>, document.getElementById("root"));
                 |                 ^
               5 |
             ```
@@ -450,7 +450,7 @@
                 chrome.runtime.onMessage.addListener(listener);
                 return () => chrome.runtime.onMessage.removeListener(listener);
               }, []);
-              return <div>{state.greeting}</div>;
+              return <h1>{state.greeting}</h1>;
             };
 
             export default App;

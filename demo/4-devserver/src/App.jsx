@@ -10,7 +10,7 @@ const App = () => {
     chrome.runtime.onMessage.addListener(listener);
     return () => chrome.runtime.onMessage.removeListener(listener);
   }, []);
-  return <div>{state.greeting}</div>;
+  return <h1>{state.greeting}</h1>;
 };
 
 export default App;
