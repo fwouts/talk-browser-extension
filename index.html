@@ -7,7 +7,7 @@
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
     />
 
-    <title>reveal.js</title>
+    <title>Building a browser extension with React</title>
 
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/reveal.css" />
@@ -28,6 +28,23 @@
     </script>
 
     <style>
+      .simple-images img {
+        border: none !important;
+        background: none !important;
+      }
+
+      .self-intro {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .avatar {
+        height: 150px;
+        border-radius: 50%;
+        margin-right: 16px !important;
+      }
+
       .line {
         display: block;
         font-size: 21px;
@@ -54,29 +71,45 @@
             ## Building a browser extension with React
           </script>
         </section>
+        <section
+          data-markdown
+          data-background-color="#26c"
+          class="simple-images"
+        >
+          <script type="text/template">
+            <div class="self-intro">
+              <img src="images/fwouts.jpg" class="avatar" />
+              @fwouts
+              <br />
+              🚀 Developer Happiness Engineer
+            </div>
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            How long do you typically wait for PR reviews?
+          </script>
+        </section>
+        <section data-markdown data-transition="none" class="simple-images">
+          <script type="text/template">
+            ![PR Monitor logo](images/prmonitor-logo.png)
+
+            ## PR Monitor
+          </script>
+        </section>
+        <section data-markdown data-transition="none">
+          <script type="text/template">
+            ![Screenshot](images/screenshot-badge.png)
+          </script>
+        </section>
+        <section data-markdown data-transition="none">
+          <script type="text/template">
+            ![Screenshot](images/screenshot-popup.png)
+          </script>
+        </section>
         <section data-markdown data-background-color="#26c">
           <script type="text/template">
             What's a browser extension anyway?
-          </script>
-        </section>
-        <section data-markdown data-transition="none">
-          <script type="text/template">
-            ![Screenshot](images/extension-screenshot-badge.png)
-          </script>
-        </section>
-        <section data-markdown data-transition="none">
-          <script type="text/template">
-            ![Screenshot](images/extension-screenshot-badge-annotated.png)
-          </script>
-        </section>
-        <section data-markdown data-transition="none">
-          <script type="text/template">
-            ![Screenshot](images/extension-screenshot-popup.png)
-          </script>
-        </section>
-        <section data-markdown data-transition="none">
-          <script type="text/template">
-            ![Screenshot](images/extension-screenshot-popup-annotated.png)
           </script>
         </section>
         <section data-markdown>
@@ -90,8 +123,7 @@
               "version": "0.2.3",
               "permissions": ["alarms", "notifications", "storage"],
               "background": {
-                "scripts": ["background.js"],
-                "persistent": true
+                "scripts": ["background.js"]
               },
               "browser_action": {
                 "default_popup": "popup.html"
@@ -111,13 +143,13 @@
             <p class="fragment" data-code-focus="5">
               <!-- Highlight permissions -->
             </p>
-            <p class="fragment" data-code-focus="6-9">
+            <p class="fragment" data-code-focus="6-8">
               <!-- Highlight background script -->
             </p>
-            <p class="fragment" data-code-focus="10-12">
+            <p class="fragment" data-code-focus="9-11">
               <!-- Highlight popup action -->
             </p>
-            <p class="fragment" data-code-focus="13">
+            <p class="fragment" data-code-focus="12">
               <!-- Highlight icons -->
             </p>
             <p class="fragment">
@@ -125,56 +157,14 @@
             </p>
           </script>
         </section>
-        <section
-          data-markdown
-          class="left-align"
-          data-markdown
-          data-background-color="#26c"
-        >
+        <section data-markdown data-background-color="#2c4">
           <script type="text/template">
-            ### Step by step
-            <p class="fragment">- Create a "web app"</p>
-            <p class="fragment">- Make it an extension</p>
-            <p class="fragment">- Add a background script</p>
-            <p class="fragment">- Profit</p>
+            ## Let's make one!
           </script>
         </section>
         <section data-markdown data-background-color="#26c">
           <script type="text/template">
             ## Creating a "web app"
-          </script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-            #### Install required packages
-
-            ```shell
-            $ yarn add react react-dom
-            $ yarn add --dev \
-            $      @babel/core @babel/cli \ # Compile modern JavaScript
-            $      @babel/preset-react \ # Compile JSX
-            $      webpack webpack-cli \ # Bundler
-            $      babel-loader \ # Use Babel from Webpack
-            $      html-webpack-plugin # HTML injection plugin for Webpack
-            ```
-            <p class="fragment" data-code-focus="1">
-              <!-- Highlight --dev -->
-            </p>
-            <p class="fragment" data-code-focus="2">
-              <!-- Highlight React -->
-            </p>
-            <p class="fragment" data-code-focus="3-4">
-              <!-- Highlight Babel -->
-            </p>
-            <p class="fragment" data-code-focus="5">
-              <!-- Highlight Webpack -->
-            </p>
-            <p class="fragment" data-code-focus="6">
-              <!-- Highlight babel-loader -->
-            </p>
-            <p class="fragment" data-code-focus="7">
-              <!-- Highlight html-webpack-plugin -->
-            </p>
           </script>
         </section>
         <section>
@@ -220,20 +210,41 @@
             <!-- Highlight "root" -->
           </p>
         </section>
-        <section data-markdown data-transition="none">
+        <section data-markdown>
           <script type="text/template">
-            ![Screenshot](diagrams/babel-webpack.svg)
+            #### Install React
+
+            ```shell
+            $ yarn add react react-dom
+            ```
+
+            Done? <!-- .element: class="fragment" -->
+
+            Not really... <!-- .element: class="fragment" -->
           </script>
         </section>
-        <section data-markdown data-separator-vertical="--">
+        <section data-markdown data-separator-vertical="!!">
           <script type="text/template">
             ### Compiling JSX with Babel
+
+            !!
+
+            #### Install Babel
+
+            ```shell
+            $ yarn add --dev \
+            $      @babel/core \
+            $      @babel/cli \
+            $      @babel/preset-react
+            ```
+
+            !!
 
             ```shell
             $ yarn babel src/popup.jsx
             ```
 
-            --
+            !!
 
             ```js
             { SyntaxError: src/popup.jsx: Unexpected token (4:16)
@@ -245,7 +256,7 @@
               5 |
             ```
 
-            --
+            !!
 
             #### babel.config.js
             ```js
@@ -253,7 +264,7 @@
               presets: ["@babel/preset-react"]
             };
 
-            --
+            !!
 
             ```shell
             $ yarn babel src/popup.jsx
@@ -267,11 +278,23 @@
             ```
           </script>
         </section>
-        <section data-markdown data-separator-vertical="--">
+        <section data-markdown data-separator-vertical="!!">
           <script type="text/template">
             ### Bundling HTML + JSX
 
-            --
+            !!
+
+            #### Install Webpack
+
+            ```shell
+            $ yarn add --dev \
+            $      webpack \
+            $      webpack-cli \
+            $      babel-loader \ # Use Babel from Webpack
+            $      html-webpack-plugin # HTML injection plugin for Webpack
+            ```
+
+            !!
 
             #### webpack.config.js
             ```js
@@ -285,10 +308,10 @@
               resolve: {
                 extensions: [".jsx", ".js"]
               },
-              mode: "production"
+              mode: "development"
             };
 
-            --
+            !!
 
             ```js
             module.exports = {
@@ -305,7 +328,7 @@
             };
             ```
 
-            --
+            !!
 
             ```js
             const HtmlWebpackPlugin = require("html-webpack-plugin");
@@ -323,7 +346,7 @@
             };
             ```
 
-            --
+            !!
 
             ```shell
             $ yarn webpack
@@ -342,11 +365,9 @@
             <p class="fragment" data-code-focus="7-8"></p>
           </script>
         </section>
-        <section data-markdown data-background-color="#2c4">
+        <section data-markdown data-transition="none">
           <script type="text/template">
-            # Demo #1
-
-            "Hello, World!" web app
+            ![Screenshot](diagrams/babel-webpack.svg)
           </script>
         </section>
         <section data-markdown data-background-color="#26c">
@@ -392,17 +413,22 @@
         <section data-markdown>
           <script type="text/template">
             ```shell
+            $ yarn webpack
+            ```
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ![Screenshot](images/screenshot-dev-build.png)
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ```shell
             $ yarn webpack --mode production
             ```
 
-            <p class="fragment">That's it!</p>
-          </script>
-        </section>
-        <section data-markdown data-background-color="#2c4">
-          <script type="text/template">
-            # Demo #2
-
-            "Hello, World!" extension
+            #### Success! <!-- .element: class="fragment" -->
           </script>
         </section>
         <section data-markdown data-background-color="#26c">
@@ -418,8 +444,7 @@
             {
               ...
               "background": {
-                "scripts": ["background.js"],
-                "persistent": true
+                "scripts": ["background.js"]
               }
             }
             ```
@@ -430,11 +455,11 @@
             #### background.js
 
             ```js
-            import randomName from "node-random-name";
+            import nicejob from "nicejob";
 
             setInterval(() => {
               chrome.runtime.sendMessage({
-                greeting: `Hello ${randomName()}`
+                message: nicejob()
               });
             }, 1000);
             ```
@@ -445,6 +470,8 @@
             #### popup.jsx
 
             ```jsx
+            import React from "react";
+            import ReactDOM from "react-dom";
             import App from "./App";
 
             ReactDOM.render(<App />, document.getElementById("root"));
@@ -456,16 +483,18 @@
             #### App.jsx
 
             ```jsx
+            import React, { useState, useEffect } from "react";
+
             const App = () => {
               const [state, setState] = useState({
-                greeting: "Hello, World!"
+                message: "Nice!"
               });
               useEffect(() => {
                 const listener = message => setState(message);
                 chrome.runtime.onMessage.addListener(listener);
                 return () => chrome.runtime.onMessage.removeListener(listener);
               }, []);
-              return <h1>{state.greeting}</h1>;
+              return <h1>{state.message}</h1>;
             };
 
             export default App;
@@ -487,25 +516,139 @@
             ```
           </script>
         </section>
-        <section data-markdown data-background-color="#2c4">
-          <script type="text/template">
-            # Demo #3
-
-            Extension with a background script
-          </script>
-        </section>
-        <section data-markdown class="left-align">
-          <script type="text/template">
-            ### More stuff we can do
-
-            <p class="fragment">- Use webpack dev server</p>
-            <p class="fragment">- Set up hot reloading</p>
-            <p class="fragment">- Use ts-loader to compile TypeScript</p>
-          </script>
-        </section>
         <section data-markdown data-background-color="#26c">
           <script type="text/template">
-            # Q/A
+            ## Improving developer experience
+          </script>
+        </section>
+        <section data-markdown data-separator-vertical="!!">
+          <script type="text/template">
+            ### webpack-dev-server
+
+            !!
+
+            Rebuild & Reload = Slow!
+
+            !!
+
+            #### Install webpack-dev-server
+
+            ```shell
+            $ yarn add --dev webpack-dev-server
+            ```
+
+            !!
+
+            #### webpack.config.js
+
+            ```js
+            module.exports = {
+              ...
+              devServer: {
+                port: 9000
+              }
+            };
+
+            !!
+
+            ```shell
+            $ yarn webpack-dev-server
+            ```
+
+            !!
+
+            But Chrome Extensions API isn't available!
+
+            !!
+
+            ## Let's cheat...
+
+            ```js
+            let fakeChrome;
+
+            export const chrome = getChromeApi();
+
+            function getChromeApi() {
+              if (process.env.NODE_ENV === "development" || !global.chrome) {
+                fakeChrome = fakeChrome || buildFakeChrome();
+                return fakeChrome;
+              } else {
+                return global.chrome;
+              }
+            }
+
+            function buildFakeChrome() {
+              const listeners = [];
+              return {
+                runtime: {
+                  onMessage: {
+                    addListener(listener) {
+                      listeners.push(listener);
+                    },
+                    removeListener(listener) {
+                      listeners = listeners.filter(l => l !== listener);
+                    }
+                  },
+                  sendMessage(message) {
+                    for (const listener of listeners) {
+                      listener(message);
+                    }
+                  }
+                }
+              };
+            }
+
+            ```
+          </script>
+        </section>
+        <section data-markdown data-separator-vertical="!!">
+          <script type="text/template">
+            ### Hot reloading
+
+            !!
+
+            Reloading the page = losing state
+
+            !!
+
+            #### Install react-hot-loader
+
+            ```shell
+            $ yarn add react-hot-loader
+            ```
+
+            !!
+
+            ![Diff](images/hot-reloading-diff.png)
+
+            !!
+
+            #### webpack.config.js
+
+            ```js
+            const webpack = require("webpack");
+
+            module.exports = {
+              ...
+              plugins: [
+                ...
+                new webpack.HotModuleReplacementPlugin()
+              ],
+              devServer: {
+                hot: true,
+                port: 9000
+              }
+            };
+            ```
+          </script>
+        </section>
+        <section data-markdown data-background-color="#26c" class="left-align">
+          <script type="text/template">
+            ## Questions?
+
+            Slides: [github.com/fwouts/talk-browser-extension](https://github.com/fwouts/talk-browser-extension)
+
+            PR Monitor extension: [github.com/zenclabs/prmonitor](https://github.com/fwouts/talk-browser-extension)
           </script>
         </section>
       </div>
