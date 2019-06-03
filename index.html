@@ -237,9 +237,9 @@
 
             ```shell
             $ yarn add --dev \
-            $      @babel/core \
-            $      @babel/cli \
-            $      @babel/preset-react
+                   @babel/core \
+                   @babel/cli \
+                   @babel/preset-react
             ```
 
             !!
@@ -292,10 +292,10 @@
 
             ```shell
             $ yarn add --dev \
-            $      webpack \
-            $      webpack-cli \
-            $      babel-loader \ # Use Babel from Webpack
-            $      html-webpack-plugin # HTML injection plugin for Webpack
+                   webpack \
+                   webpack-cli \
+                   babel-loader \
+                   html-webpack-plugin
             ```
 
             !!
@@ -432,20 +432,6 @@
         </section>
         <section data-markdown>
           <script type="text/template">
-            #### manifest.json
-
-            ```json
-            {
-              ...
-              "background": {
-                "scripts": ["background.js"]
-              }
-            }
-            ```
-          </script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
             #### background.js
 
             ```js
@@ -456,6 +442,20 @@
                 message: nicejob()
               });
             }, 1000);
+            ```
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            #### manifest.json
+
+            ```json
+            {
+              ...
+              "background": {
+                "scripts": ["background.js"]
+              }
+            }
             ```
           </script>
         </section>
