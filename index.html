@@ -518,17 +518,7 @@
 
             !!
 
-            #### webpack.config.js
-
-            ```js
-            module.exports = {
-              ...
-              devServer: {
-                port: 9000
-              }
-            };
-
-            !!
+            #### Start dev server
 
             ```shell
             $ yarn webpack-dev-server
@@ -602,7 +592,15 @@
 
             !!
 
-            #### webpack.config.js
+            #### Use hot reloading
+
+            ```shell
+            $ yarn webpack-dev-server --hot
+            ```
+
+            !!
+
+            #### Always hot reload
 
             ```js
             const webpack = require("webpack");
@@ -614,8 +612,7 @@
                 new webpack.HotModuleReplacementPlugin()
               ],
               devServer: {
-                hot: true,
-                port: 9000
+                hot: true
               }
             };
             ```
