@@ -467,9 +467,7 @@
             import React, { useState, useEffect } from "react";
 
             const App = () => {
-              const [state, setState] = useState({
-                message: "Nice!"
-              });
+              const [state, setState] = useState({ message: "Nice!" });
               useEffect(() => {
                 const listener = message => setState(message);
                 chrome.runtime.onMessage.addListener(listener);
